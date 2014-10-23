@@ -1,4 +1,4 @@
-vc = 50; delta = .05; N = 1:20000;
+vc = 50; delta = .05; N = 1:10000;
 
 a = zeros(length(N), 1); b = zeros(length(N), 1); 
 c = zeros(length(N), 1); d = zeros(length(N), 1);
