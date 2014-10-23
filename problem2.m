@@ -1,4 +1,4 @@
-vc = 50; delta = .05; N = 1:10000;
+vc = 50; delta = .05; N = 1:20000;
 
 a = zeros(length(N), 1); b = zeros(length(N), 1); 
 c = zeros(length(N), 1); d = zeros(length(N), 1);
@@ -17,13 +17,13 @@ for i = 1:length(N)
     % same as in c - solve for epsilon using quadratic equation
     % a = N - 2, b = -2, c = -N * q
 %     q = log(4 * N(i)^(2 * vc)/ delta);
-%     q = log(4) + log(N(i)^(2 * vc)) + log(1/ delta);
-    q = log(4) + N(i) * log(2 * vc) + log(1/ delta);
+%     q = log(4) + log(N(i)^(2 * vc)) - log(delta);
+    q = log(4) + N(i) * log(2 * vc) - log(delta);
     d(i) = (2 + sqrt((-2)^2 - 4 * (N(i) - 2) * -N(i) * q))/ ...
         (2 * (N(i) - 2));
 end
 
-plot(N, a, 'bx'); hold on;
-plot(N, b, 'ro'); 
-plot(N, c, 'k-'); 
-plot(N, d, 'c*');
+% plot(N, a, 'bx'); hold on;
+% plot(N, b, 'ro'); 
+% plot(N, c, 'k-'); 
+% plot(N, d, 'c*');
