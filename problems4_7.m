@@ -13,7 +13,7 @@ f = sin(pi * x);        % compute the y value for every x
 plot(x, f); axis([-1 1 -1 1]); axis square;
 hold on;
 
-%% use linear regression to find min SSE hypothesis on random two points
+%% use linear regression to find min SSE hypothesis on two random points
 a = -1; b = 1; N = 2; num_iters = 1000;
 g = zeros(num_iters, 1);
 X_TRAIN = [];
@@ -61,7 +61,7 @@ E_out_b = bias_5 + variance_6;
 
 %% Option a
 %% use the average of the two x_train points to find min SSE hypothesis 
-% on random two points
+% on two random points
 a = -1; b = 1; N = 2; num_iters = 1000;
 g = zeros(num_iters, 1);
 X_TRAIN = [];
@@ -98,9 +98,9 @@ fprintf('Optoin(a)\th(x) = b\t%f\n', E_out_a);
 fprintf('Optoin(b)\th(x) = ax\t%f\n', E_out_b);
 
 %% Option c
-%% use linear regression to find min SSE hypothesis on random two points
+%% use linear regression to find min SSE hypothesis on two random points
 a = -1; b = 1; N = 2; num_iters = 1000;
-g = zeros(num_iters, 2);    % now two waits incl. the intercept term
+g = zeros(num_iters, 2);    % now two weights incl. the intercept term
 X_TRAIN = [];
 F_TRAIN = [];
 
