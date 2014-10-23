@@ -43,8 +43,8 @@ legend('f (target function)', 'g bar', 'location', 'best');
 
 %% Question 5 
 % bias = (g_bar(x) - f(x)).^2
-bias = mean((g_bar * X_TRAIN - F_TRAIN).^2);
-fprintf('bias: %f\n', bias);
+bias_5 = mean((g_bar * X_TRAIN - F_TRAIN).^2);
+fprintf('bias: %f\n', bias_5);
 
 %% Question 6
 % variance = g_each_data_set(x) - g_bar(x)).^2
@@ -52,12 +52,12 @@ vars = zeros(length(g), 1);
 for i = 1:length(g)
     vars(i) = mean((g(i) * X_TRAIN - g_bar * X_TRAIN).^2);
 end
-variance = mean(vars);
-fprintf('variance: %f\n', variance);
+variance_6 = mean(vars);
+fprintf('variance: %f\n', variance_6);
 
 %% Question 7
 %% Option b
-E_out_b = bias + variance;
+E_out_b = bias_5 + variance_6;
 
 %% Option a
 %% use the average of the two x_train points to find min SSE hypothesis 
