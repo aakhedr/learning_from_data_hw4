@@ -192,7 +192,7 @@ for i = 1:num_iters
     x_train = [ones(size(x_train, 1), 1) x_train];
     x_train = x_train.^2;
     % use normal equation to get the min SSE hypothesis (g)
-    g(i, :) = pinv(x_train' * x_train) * x_train' * f_train;
+    g(i, :) = (pinv(x_train' * x_train) * x_train' * f_train)';
 
     %== Use the following to calcualte the bias and variance ==%
     % combine all x_train points in 1 vector
