@@ -100,7 +100,7 @@ fprintf('Optoin(b)\th(x) = ax\t%f\n', E_out_b);
 %% Option c
 %% use linear regression to find min SSE hypothesis on random two points
 a = -1; b = 1; N = 2; num_iters = 1000;
-g = zeros(num_iters, 2);    % now two waits incl. the intercept term
+g = zeros(num_iters, 1);
 X_TRAIN = [];
 F_TRAIN = [];
 
@@ -110,12 +110,9 @@ for i = 1:num_iters
     % compute corresponding y axis value according to the target function
     % f(x) = sin(pi * x)
     f_train = sin(pi * x_train);
-
-    % first add intercept term to x_train
-    x_train = [ones(size(x_train, 1), 1) x_train];
-
+    
     % use normal equation to get the min SSE hypothesis (g)
-    g(i, :) = (pinv(x_train' * x_train) * x_train' * f_train)';
+    g(i) = pinv(x_train' * x_train) * x_train' * f_train;
 
     %== Use the following to calcualte the bias and variance ==%
     % combine all x_train points in 1 vector
@@ -131,7 +128,7 @@ bias = mean((g_bar * X_TRAIN - F_TRAIN).^2);
 % variance = g_each_data_set(x) - g_bar(x)).^2
 vars = zeros(length(g), 1);
 for i = 1:length(g)
-    vars(i) = mean((g(i, :) * X_TRAIN - g_bar * X_TRAIN).^2);
+    vars(i) = mean((g(i) * X_TRAIN - g_bar * X_TRAIN).^2);
 end
 variance = mean(vars);
 E_out_c = bias + variance;
