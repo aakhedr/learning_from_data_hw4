@@ -12,18 +12,19 @@ for i = 1:length(N)
     % epsilon = (-b +/- sqrt(-b^2 - 4 * a * c))/ (2 * a)
     % a = N, b = -2, c = -q ----- epsilon cannot be negative
     q = log(6 * (2 * N(i))^vc/ delta);
-    c(i) = (2 + sqrt((-2)^2 - 4 * N(i) * -q))/ (2 * N(i));
+    c(i) = (2 + (sqrt((-2)^2 - 4 * N(i) * -q)))/ (2 * N(i));
 
     % same as in c - solve for epsilon using quadratic equation
-    % a = N - 2, b = -2, c = -N * q
+    % a = 2 * (N - 4), b = -4, c = -q
 %     q = log(4 * N(i)^(2 * vc)/ delta);
-%     q = log(4) + log(N(i)^(2 * vc)) - log(delta);
+%     q = log(4) + log((N(i))^(2 * vc)) - log(delta);
     q = log(4) + N(i) * log(2 * vc) - log(delta);
-    d(i) = (2 + sqrt((-2)^2 - 4 * (N(i) - 2) * -N(i) * q))/ ...
-        (2 * (N(i) - 2));
+    d(i) = (4 + sqrt((-4)^2 - 4 * 2 * (N(i) - 4) * -q))/ ...
+        (2 * 2 * (N(i) - 4));
 end
 
-% plot(N, a, 'bx'); hold on;
-% plot(N, b, 'ro'); 
-% plot(N, c, 'k-'); 
-% plot(N, d, 'c*');
+plot(N, a, 'b'); hold on;
+plot(N, b, 'r'); 
+plot(N, c, 'k'); 
+plot(N, d, 'c'); hold off;
+legend('a', 'b', 'c', 'd', 'location', 'best');
